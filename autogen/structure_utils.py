@@ -17,7 +17,7 @@ T = TypeVar("T", bound=BaseModel)
 
 
 # string_similarity
-# copied from https://github.com/lion-agi/lion-os/blob/main/lion/integrations/pydantic_/break_down_annotation.py
+# copied from https://github.com/lion-agi/lion-os/blob/main/lion/libs/string_similarity.py
 # copyright by HaiyangLi, APACHE LICENSE 2.0
 def cosine_similarity(s1: str, s2: str) -> float:
     """Calculate the cosine similarity between two strings.
@@ -540,3 +540,5 @@ def fix_json_string(str_to_parse: str, /) -> str:
 
 # TODO: add a recursive to dict into AG2
 # check `recursive_to_dict` under https://github.com/lion-agi/lion-os/blob/main/lion/libs/parse.py
+
+# TODO: add fuzzy matching key, fuzzy matching mapping, need to modify the implementation of to_dict from LION-OS
