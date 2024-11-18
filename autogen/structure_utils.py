@@ -4,14 +4,14 @@
 
 import json
 import re
-from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from difflib import SequenceMatcher
 from inspect import isclass
 from itertools import product
-from typing import Any, Literal, TypeVar, get_args, get_origin
+from typing import Any, Callable, Dict, List, Optional, Sequence, TypeVar, Union, get_args, get_origin
 
 from pydantic import BaseModel
+from typing_extensions import Literal
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -207,8 +207,8 @@ def levenshtein_similarity(s1: str, s2: str) -> float:
     return 1 - (distance / max_len)
 
 
-# Map of available similarity algorithms
-SIMILARITY_ALGO_MAP: dict[str, Callable[[str, str], float]] = {
+# Type definitions
+SIMILARITY_ALGO_MAP: Dict[str, Callable[[str, str], float]] = {
     "jaro_winkler": jaro_winkler_similarity,
     "levenshtein": levenshtein_similarity,
     "sequence_matcher": lambda s1, s2: SequenceMatcher(None, s1, s2).ratio(),
@@ -242,7 +242,7 @@ def string_similarity(
     threshold: float = 0.0,
     case_sensitive: bool = False,
     return_most_similar: bool = False,
-) -> str | list[str] | None:
+) -> Optional[Union[str, List[str]]]:
     """Find similar strings using specified similarity algorithm."""
     if not correct_words:
         raise ValueError("correct_words must not be empty")
@@ -305,7 +305,7 @@ def string_similarity(
 # copyright by HaiyangLi, APACHE LICENSE 2.0
 def break_down_pydantic_annotation(
     model: type[T], max_depth: int | None = None, current_depth: int = 0
-) -> dict[str, Any]:
+) -> Dict[str, Any]:
     """
     Break down the type annotations of a Pydantic model into a dictionary.
 
@@ -347,7 +347,7 @@ def break_down_pydantic_annotation(
     if max_depth is not None and current_depth >= max_depth:
         raise RecursionError("Maximum recursion depth reached")
 
-    out: dict[str, Any] = {}
+    out: Dict[str, Any] = {}
     for k, v in model.__annotations__.items():
         origin = get_origin(v)
         if _is_pydantic_model(v):
@@ -370,7 +370,7 @@ def _is_pydantic_model(x: Any) -> bool:
 
 # copied from https://github.com/lion-agi/lion-os/blob/main/lion/libs/parse.py
 # copyright by HaiyangLi, APACHE LICENSE 2.0
-def to_json(string: str | list[str], /, fuzzy_parse: bool = False) -> list[dict[str, Any]] | dict:
+def to_json(string: str | List[str], /, fuzzy_parse: bool = False) -> Union[List[Dict[str, Any]], Dict]:
     """Extract and parse JSON content from a string or markdown code blocks.
 
     This function attempts to parse JSON directly from the input string first.
@@ -434,7 +434,7 @@ def to_json(string: str | list[str], /, fuzzy_parse: bool = False) -> list[dict[
     return [json.loads(match) for match in matches]
 
 
-def fuzzy_parse_json(str_to_parse: str, /) -> dict[str, Any] | list[dict[str, Any]]:
+def fuzzy_parse_json(str_to_parse: str, /) -> Union[Dict[str, Any], List[Dict[str, Any]]]:
     """Parse a JSON string with automatic fixing of common formatting issues.
 
     Args:
