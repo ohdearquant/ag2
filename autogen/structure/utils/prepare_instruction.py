@@ -1,3 +1,6 @@
+# copied from https://github.com/lion-agi/lion-os/blob/main/lion/core/communication/
+# copyright by HaiyangLi, APACHE LICENSE 2.0
+
 from typing import Any, Literal
 
 from pydantic import BaseModel
