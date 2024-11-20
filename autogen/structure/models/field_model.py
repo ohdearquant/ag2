@@ -90,7 +90,7 @@ class FieldModel(BaseModel):
             - Preserves all metadata in field_info
         """
         annotation = self.annotation if self.annotation is not PydanticUndefined else Any
-        field_obj: FieldInfo = Field(**self.to_dict(True))  # type: ignore
+        field_obj: FieldInfo = Field(**self.model_dump(exclude_unset=True))  # type: ignore
         field_obj.annotation = annotation
         return field_obj
 
