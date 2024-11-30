@@ -1,6 +1,9 @@
-# copied from https://github.com/lion-agi/lion-os/tree/main/lion/libs/string_similarity
-# copyright by HaiyangLi, APACHE LICENSE 2.0
-
+# Copyright (c) 2023 - 2024, Owners of https://github.com/ag2ai
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# Portions derived from https://github.com/lion-agi/lion-core are under the Apache-2.0 License
+# SPDX-License-Identifier: Apache-2.0
 from dataclasses import dataclass
 from difflib import SequenceMatcher
 from itertools import product

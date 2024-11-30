@@ -1,5 +1,9 @@
-# copied from https://github.com/lion-agi/lion-os/blob/main/lion/integrations/pydantic_/break_down_annotation.py
-# copyright by HaiyangLi, APACHE LICENSE 2.0
+# Copyright (c) 2023 - 2024, Owners of https://github.com/ag2ai
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# Portions derived from https://github.com/lion-agi/lion-core are under the Apache-2.0 License
+# SPDX-License-Identifier: Apache-2.0
 
 from inspect import isclass
 from typing import Any, Dict, TypeVar, get_args, get_origin

@@ -1,6 +1,9 @@
-# copied from https://github.com/lion-agi/lion-os/blob/main/lion/libs/parse/validate/keys.py
-# copyright by HaiyangLi, APACHE LICENSE 2.0
-
+# Copyright (c) 2023 - 2024, Owners of https://github.com/ag2ai
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# Portions derived from https://github.com/lion-agi/lion-core are under the Apache-2.0 License
+# SPDX-License-Identifier: Apache-2.0
 from collections.abc import Callable, Sequence
 from typing import Any, Literal, TypedDict
 
