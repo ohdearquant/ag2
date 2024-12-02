@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[6291],{35986:a=>{a.exports=JSON.parse('{"label":"data automation","permalink":"/ag2/blog/tags/data-automation","allTagsPath":"/ag2/blog/tags","count":1,"unlisted":false}')}}]);
