@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[65094],{35320:a=>{a.exports=JSON.parse('{"label":"mistral ai","permalink":"/ag2/blog/tags/mistral-ai","allTagsPath":"/ag2/blog/tags","count":1,"unlisted":false}')}}]);

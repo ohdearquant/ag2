@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[40285],{31752:a=>{a.exports=JSON.parse('{"label":"multimodal","permalink":"/ag2/blog/tags/multimodal","allTagsPath":"/ag2/blog/tags","count":1,"unlisted":false}')}}]);
