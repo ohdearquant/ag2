@@ -4,23 +4,9 @@
 #
 # Portions derived from  https://github.com/microsoft/autogen are under the MIT License.
 # SPDX-License-Identifier: MIT
-from typing import (
-    Any,
-    Callable,
-    List,
-    Mapping,
-    Optional,
-    Protocol,
-    Sequence,
-    Tuple,
-    TypedDict,
-    Union,
-    runtime_checkable,
-)
+from typing import Any, Callable, List, Optional, Protocol, Tuple, TypedDict, Union, runtime_checkable
 
-Metadata = Union[Mapping[str, Any], None]
-Vector = Union[Sequence[float], Sequence[int]]
-ItemID = Union[str, int]  # chromadb doesn't support int ids, VikingDB does
+from autogen.extensions import RAG
 
 
 class Document(TypedDict):
@@ -32,17 +18,23 @@ class Document(TypedDict):
     embedding: Vector, Optional | the vector representation of the content.
     """
 
-    id: ItemID
+    id: RAG.ItemID
     content: str
-    metadata: Optional[Metadata]
-    embedding: Optional[Vector]
+    metadata: Optional[RAG.Metadata]
+    embedding: Optional[RAG.Vector]
+
+    @property
+    def doctype(self) -> str:
+        return self.metadata.get("doctype", RAG.DocumentType.TEXT).value
 
 
 """QueryResults is the response from the vector database for a query/queries.
 A query is a list containing one string while queries is a list containing multiple strings.
 The response is a list of query results, each query result is a list of tuples containing the document and the distance.
 """
-QueryResults = List[List[Tuple[Document, float]]]
+QueryResult = List[Tuple[Document, RAG.Distance]]
+QueryResults = List[QueryResult]
+ItemID = Union[str, int]
 
 
 @runtime_checkable
