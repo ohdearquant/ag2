@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[75495],{4005:t=>{t.exports=JSON.parse('{"label":"Structured Outputs","permalink":"/ag2/blog/tags/structured-outputs","allTagsPath":"/ag2/blog/tags","count":1,"unlisted":false}')}}]);

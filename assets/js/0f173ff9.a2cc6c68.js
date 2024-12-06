@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[49893],{21848:a=>{a.exports=JSON.parse('{"label":"Graph RAG","permalink":"/ag2/blog/tags/graph-rag","allTagsPath":"/ag2/blog/tags","count":1,"unlisted":false}')}}]);
